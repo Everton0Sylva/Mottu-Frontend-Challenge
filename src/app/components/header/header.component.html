@@ -1,0 +1,21 @@
+<div class="d-flex flex-row justify-content-between align-content-center w-100 bg-black" id="header-div">
+    <div class="logo">
+        <img src="assets/imgs/logo.png" alt="logo">
+    </div>
+    <div class="col-auto">
+        <div class="btn-group col-auto" role="group" [(ngModel)]="currentPage">
+            <input type="radio" class="btn-check" name="btnradio" id="btnhome" autocomplete="off" value="btnhome"
+                checked>
+            <label for="btnhome" class="btn btn-outline-light"><i class="fa-solid fa-house me-2"></i>{{"header.home"
+                |
+                translate
+                }}</label>
+
+            <input type="radio" class="btn-check" name="btnradio" id="btnbookmarks" autocomplete="off"
+                value="btnbookmarks">
+            <label for="btnbookmarks" class="btn btn-outline-light"><i
+                    class="fa-solid fa-heart me-2"></i>{{"header.bookmarks"
+                | translate }}</label>
+        </div>
+    </div>
+</div>

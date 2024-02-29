@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Mottu-Frontend-Challenge';
+  title = 'Mottu Front-end Challenge';
 }

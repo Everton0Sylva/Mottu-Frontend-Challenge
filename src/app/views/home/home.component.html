@@ -1,1 +1,18 @@
-<p>home works!</p>
+<div class="main-container">
+    <div class="main-header">
+        <div class="d-flex flex-row justify-content-between">
+            <label class="main-title">
+                {{"header.home" | translate}}
+            </label>
+            <div class="form-floating col-lg-4 col-md-6 mb-3" data-bs-theme="dark">
+                <input class="form-control" data-bs-theme="dark" id="Search" placeholder="Search"
+                (keyup)="onSearchChar($event)">
+                <label for="Search" data-bs-theme="dark">{{"home.search" | translate}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="h-100">
+        <app-table-grid></app-table-grid>
+
+    </div>
+</div>

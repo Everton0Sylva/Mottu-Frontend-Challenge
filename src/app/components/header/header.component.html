@@ -3,7 +3,7 @@
         <img src="assets/imgs/logo.png" alt="logo">
     </div>
     <div class="col-auto">
-        <div class="btn-group col-auto" role="group" [(ngModel)]="currentPage">
+        <div class="btn-group col-auto" role="group" [(ngModel)]="currentPage" ngDefaultControl>
             <input type="radio" class="btn-check" name="btnradio" id="btnhome" autocomplete="off" value="btnhome"
                 checked>
             <label for="btnhome" class="btn btn-outline-light"><i class="fa-solid fa-house me-2"></i>{{"header.home"

@@ -1,12 +1,8 @@
-
 @import url("assets/fonts/fonts.scss");
 
-body{
+body {
     font-family: Poppins, sans-serif;
 }
-
-
-
 
 
 $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
@@ -14,3 +10,43 @@ $fa-font-path: '@fortawesome/fontawesome-free/webfonts';
 @import '@fortawesome/fontawesome-free/scss/regular.scss';
 @import '@fortawesome/fontawesome-free/scss/solid.scss';
 @import '@fortawesome/fontawesome-free/scss/brands.scss';
+
+
+
+
+
+
+.main-title {
+    font-family: Creepster;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 48px;
+    letter-spacing: -0.02em;
+    text-align: left;
+    color: #00B5CC;
+    -webkit-text-stroke: 2px #B2DF28;
+    text-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.08);
+
+}
+
+.main-container {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    gap: 3rem;
+}
+
+.main-header {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 48px;
+    width: 100%;
+}
+
+
+.form-floating>label {
+    color: rgba(222, 226, 230, 0.75);
+}

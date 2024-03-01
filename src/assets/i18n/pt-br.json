@@ -2,5 +2,13 @@
     "header": {
         "home": "Início",
         "bookmarks": "Favoritos"
+    },
+    "home": {
+        "search": "Pesquisar"
+    },    
+    "table-grid": {
+        "no-data": "Nada foi encontrado",
+        "no-data-subtitle": "Tente realizar uma nova busca."
     }
+    
 }

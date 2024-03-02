@@ -8,6 +8,8 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TableGridModule } from '../components/table-grid/table-grid.module';
+import { TableGridService } from '../services/table-grid.service';
+import { NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
@@ -22,7 +24,11 @@ import { TableGridModule } from '../components/table-grid/table-grid.module';
     ViewsRoutingModule,
     HeaderModule,
     TableGridModule,
-    TranslateModule
+    TranslateModule,
+    NgxUiLoaderModule,
+  ],
+  providers:[
+    TableGridService,
   ]
 })
 export class ViewsModule { }

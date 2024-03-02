@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { interval, skipWhile, takeUntil, takeWhile, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +14,7 @@ export class ApiRequestService {
     'Access-Control-Allow-Methods': 'GET, POST, PUT, PATCH, DELETE'
   }
 
-  public urls: any;
-
-  constructor() {
-    this.onInitURLs().then((data: any) => {
-      this.urls = data;
-    })
-  }
-
+  public urls: any = null;
 
   async onInitURLs() {
     let response = await fetch(environment.baseUrl, {
@@ -27,15 +22,25 @@ export class ApiRequestService {
       headers: this.headers
     });
     if (response.ok) {
-      return await response.json();
+      this.urls = await response.json();
+      return true;
     } else {
       throw new Error(response.status.toString());
     }
   }
 
-  async fnGetChars(str: string) {
-    let uri = this.urls.characters + '/?name=' + str;
-    return await this.fnFetch(uri, 'GET')
+  fnGetChars(param: string): Promise<any> {
+    return new Promise((resolve) => {
+      let inter = interval(100)
+        .pipe(
+          skipWhile(() => this.urls == null))
+        .subscribe(async (t) => {
+          inter.unsubscribe();
+          let uri = this.urls.characters + param;
+          let res = await this.fnFetch(uri, 'GET');
+          resolve(res)
+        })
+    });
   }
 
   async fnFetch(uri: string, method: string) {

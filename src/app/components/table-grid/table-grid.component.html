@@ -1,6 +1,15 @@
-<div class="table-grid">
-    <div class="no-data">
+<div class="table-grid-container" [ngSwitch]="listChars.length > 0">
+    <div class="no-data" *ngSwitchCase="false">
         <label class="no-data-title">{{"table-grid.no-data" | translate }}</label>
         <label class="no-data-subtitle">{{"table-grid.no-data-subtitle" | translate }}</label>
+    </div>
+    <div class="table-grid-data" *ngSwitchDefault>
+        <div class="char-card" *ngFor="let char of listChars; let idx=index">
+            <img [src]="char.Image" [alt]="char.Name">
+            <div class="info">
+                <label class="name">{{char.Name}}</label>
+                <label class="species">{{char.Species}}</label>
+            </div>
+        </div>
     </div>
 </div>

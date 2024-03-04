@@ -1,1 +1,27 @@
-<p>home works!</p>
+<div class="main-container">
+    <div class="main-header">
+        <div class="d-flex flex-row justify-content-between">
+            <label class="main-title">
+                {{"header.home" | translate}}
+            </label>
+            <div class="form-floating col-lg-4 col-md-6 mb-3" data-bs-theme="dark">
+                <input class="form-control" data-bs-theme="dark" id="Search" placeholder="Search"
+                    (keyup)="onSearchChar($event)">
+                <label for="Search" data-bs-theme="dark">{{"home.search" | translate}}</label>
+            </div>
+        </div>
+    </div>
+    <div class="table-grid">
+        <ng-scrollbar autoHide="true" overlay="true" #scrollbar>
+            <ngx-ui-loader [loaderId]="'tablegridLoader'" [bgsSize]="200" bgsType="ball-scale-multiple"
+                bgsColor="#B2DF28" [bgsOpacity]="1" bgsPosition="center-center"></ngx-ui-loader>
+            <app-table-grid></app-table-grid>
+
+        </ng-scrollbar>
+    </div>
+    <div class="mt-2" *ngIf="info.total >20">
+        <ngb-pagination class="d-flex justify-content-center" [directionLinks]="false" data-bs-theme="dark" [collectionSize]="info.total" [(page)]="currentPage" [maxSize]="18" [rotate]="true" [pageSize]="info.size"
+            [rotate]="true" [boundaryLinks]="true" (pageChange)="fnGotoPage()"></ngb-pagination>
+    </div>
+
+</div>

@@ -3,19 +3,19 @@
         <img src="assets/imgs/logo.png" alt="logo">
     </div>
     <div class="col-auto">
-        <div class="btn-group col-auto" role="group" [(ngModel)]="currentPage">
-            <input type="radio" class="btn-check" name="btnradio" id="btnhome" autocomplete="off" value="btnhome"
-                checked>
+        <div class="btn-group col-auto" role="group" [(ngModel)]="currentPage" ngDefaultControl>
+            <input type="radio" class="btn-check" name="btnradio" id="btnhome" autocomplete="off" value="home" routerLink="/"
+                [checked]="currentPage == 'home'">
             <label for="btnhome" class="btn btn-outline-light"><i class="fa-solid fa-house me-2"></i>{{"header.home"
                 |
                 translate
                 }}</label>
 
             <input type="radio" class="btn-check" name="btnradio" id="btnbookmarks" autocomplete="off"
-                value="btnbookmarks">
+            [checked]="currentPage == 'bookmarks'"  value="bookmarks" routerLink="/bookmarks">
             <label for="btnbookmarks" class="btn btn-outline-light"><i
                     class="fa-solid fa-heart me-2"></i>{{"header.bookmarks"
-                | translate }}</label>
+                | translate }}<span class="badge-bookmarks">{{bookmarksCount}}</span></label>
         </div>
     </div>
 </div>

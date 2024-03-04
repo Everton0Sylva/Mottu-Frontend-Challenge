@@ -37,8 +37,12 @@ export class ApiRequestService {
         .subscribe(async (t) => {
           inter.unsubscribe();
           let uri = this.urls.characters + param;
+          try{
           let res = await this.fnFetch(uri, 'GET');
           resolve(res)
+          }catch(e: any){
+            resolve([])
+          }
         })
     });
   }

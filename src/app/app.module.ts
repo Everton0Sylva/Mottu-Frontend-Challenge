@@ -9,8 +9,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiRequestService } from './services/api-request.service';
 import { FormsModule } from '@angular/forms';
-import { HeaderModule } from './components/header/header.module';
 import { NgxUiLoaderModule, SPINNER } from 'ngx-ui-loader';
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,8 +44,7 @@ export function createTranslateLoader(http: HttpClient) {
       fgsPosition: 'center-center',
       overlayColor: "rgba(178, 223, 40, 0.8)",
       hasProgressBar: false,
-    }),
-    
+    })
   ],
   providers: [
     TranslateService,

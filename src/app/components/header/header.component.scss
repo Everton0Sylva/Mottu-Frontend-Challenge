@@ -1,4 +1,4 @@
-#header-div{
+#header-div {
     height: 10vh;
     padding: 8px 1.6667vw 8px 1.6667vw
 }
@@ -6,9 +6,25 @@
 .logo {
     height: auto;
     width: 100vw;
-    img{
+
+    img {
         width: auto;
         height: 100%;
         object-fit: contain;
     }
+}
+
+.badge-bookmarks {
+    margin-left: 4px;
+    padding: 1px 6px ;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 100%;
+    border: 1px solid rgba(61, 61, 61, 1);
+    font-family: Poppins;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: black;
 }

@@ -16,24 +16,26 @@ export class BookmarksComponent {
 
   @ViewChild(NgScrollbar) scrollRef: NgScrollbar;
 
-  public info ={
-    total : 1,
-    size: 20
-  };
+  public hasBookmarks: boolean = false;
   public currentPage: number = 1;
 
   ngAfterViewInit() {
-    this.ngxuiLoaderService.start();
-    let listBookmarks = []
+    let listBookmarks: Array<number> = []
     let bookmarks = localStorage.getItem("bookmarks");
     if (bookmarks) {
       listBookmarks = JSON.parse(bookmarks)
+      if (listBookmarks.length > 0) {
+        this.ngxuiLoaderService.start();
+        const param = '/' + listBookmarks.join(",");
+        let that = this;
+        this.apiRequest.fnGetChars(param).then((data: any) => {
+          if(Array.isArray(data)){
+          that.tableGridService.setListChars([...data]);
+          } else that.tableGridService.setListChars([data]);
+          this.ngxuiLoaderService.stop()
+          this.hasBookmarks = true;
+        })
+      }
     }
-    const param = '/' + listBookmarks.join(",");
-    let that = this;
-    this.apiRequest.fnGetChars(param).then((data: any) => {
-        that.tableGridService.setListChars([...data]);
-        this.ngxuiLoaderService.stop()
-    })
   }
 }

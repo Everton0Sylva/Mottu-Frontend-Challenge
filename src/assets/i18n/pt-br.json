@@ -9,6 +9,11 @@
     "table-grid": {
         "no-data": "Nada foi encontrado",
         "no-data-subtitle": "Tente realizar uma nova busca."
+    },
+    "bookmarks": {
+        "no-bookmarks": "Parece que você ainda não tem favoritos",
+        "no-bookmarks-subtitle": "Volte à página inicial e escolha os melhores para você.",
+        "back-to-home": "Voltar ao início"
     }
     
 }

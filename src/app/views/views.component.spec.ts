@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewsComponent } from './views.component';
+import { ViewsModule } from './views.module';
+import { RouterTestingModule } from '@angular/router/testing';
+import { TranslateModule } from '@ngx-translate/core';
 
 describe('ViewsComponent', () => {
   let component: ViewsComponent;
@@ -8,7 +11,9 @@ describe('ViewsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ViewsComponent]
+      declarations: [ViewsComponent],
+      imports: [ViewsModule,RouterTestingModule,
+        TranslateModule.forRoot(),]
     })
     .compileComponents();
     

@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { interval, skipWhile, takeUntil, takeWhile, timer } from 'rxjs';
+import { Observable, interval, map, skipWhile, takeUntil, takeWhile, tap, timer } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -16,17 +17,22 @@ export class ApiRequestService {
 
   public urls: any = null;
 
-  async onInitURLs() {
-    let response = await fetch(environment.baseUrl, {
-      method: "GET",
+  httpClient = inject(HttpClient);
+
+  onInitURLs() {
+    let that = this;
+    return this.httpClient.get(environment.baseUrl, {
+      headers: this.headers
+    }).pipe(map((data: any) => {
+      that.urls = data;
+      return true;
+    }));
+  }
+  
+  onHttpGet(uri: string) {
+    return this.httpClient.get(uri, {
       headers: this.headers
     });
-    if (response.ok) {
-      this.urls = await response.json();
-      return true;
-    } else {
-      throw new Error(response.status.toString());
-    }
   }
 
   fnGetChars(param: string): Promise<any> {
@@ -37,10 +43,10 @@ export class ApiRequestService {
         .subscribe(async (t) => {
           inter.unsubscribe();
           let uri = this.urls.characters + param;
-          try{
-          let res = await this.fnFetch(uri, 'GET');
-          resolve(res)
-          }catch(e: any){
+          try {
+            let res = await this.fnFetch(uri, 'GET');
+            resolve(res)
+          } catch (e: any) {
             resolve([])
           }
         })

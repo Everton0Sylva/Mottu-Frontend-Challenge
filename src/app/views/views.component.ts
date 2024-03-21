@@ -12,9 +12,14 @@ export class ViewsComponent {
 
   constructor(private ngxuiLoaderService: NgxUiLoaderService, private apiRequestService: ApiRequestService) {
     this.ngxuiLoaderService.start();
-    this.apiRequestService.onInitURLs().then((data: any) => {
+    this.apiRequestService.onInitURLs().subscribe((data: any) => {
       this.ngxuiLoaderService.stop();
     })
   }
 
+  async ngAfterViewInit() {
+    this.apiRequestService.onHttpGet("https://rickandmortyapi.com/api/character/?page=1").subscribe((data: any) => {
+      debugger
+    })
+  }
 }
